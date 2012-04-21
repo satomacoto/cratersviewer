@@ -28,11 +28,11 @@ $(function(){
       var lng = this.Longitude;
       lng = parseInt(lng.slice(0, lng.length - 1));
       div.click(function() {
+        $("#basic-modal-content").modal();
         setLatLng(lat, lng);
       });
       //div.append($("<div/>").attr("class", "note").html(this.name));
       $container.append(div);
-      console.log(this);
     });
     $container.imagesLoaded(function(){
       $container.masonry({
@@ -42,11 +42,11 @@ $(function(){
     });
     
     // filter and crop
-    $(".photo").MyThumbnail({
-      thumbWidth:200,
-      thumbHeight:200,
-      backgroundColor:"#ccc",
-      imageDivClass:"myPic"
-    });    
+//    $(".photo").MyThumbnail({
+//      thumbWidth:200,
+//      thumbHeight:200,
+//      backgroundColor:"#ccc",
+//      imageDivClass:"myPic"
+//    });    
   });
 });

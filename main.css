@@ -1,5 +1,10 @@
 #simplemodal-overlay {background-color:#000;}
 #simplemodal-container {background-color:#333; border:8px solid #444; padding:12px;}
+h1 {
+  font-size: 40px;
+  font-family: helvetica;
+  padding-left: 10px;
+}
 .item {
   width: 220px;
   margin: 10px;
