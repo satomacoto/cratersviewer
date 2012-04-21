@@ -3,12 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+<!--<link rel="stylesheet" href="basic.css" type="text/css" />-->
 <script src="jquery-1.7.1.min.js"></script>
 <script src="jquery.masonry.min.js"></script>
 <script src="jquery.imagesloaded.min.js"></script>
+<script src="jquery.simplemodal.1.4.2.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="http://www.kfsoft.info/MyThumbnail/jquery.MyThumbnail.js"></script>
 <style type="text/css">
+#simplemodal-overlay {background-color:#000;}
+#simplemodal-container {background-color:#333; border:8px solid #444; padding:12px;}
 .item {
   width: 220px;
   margin: 10px;
@@ -40,7 +44,7 @@ var map;
 function initialize() {
     var latlng = new google.maps.LatLng(35.539001,134.228468);
     var opts = {
-	zoom: 13,
+	zoom: 10,
 	center: latlng,
 	mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -60,6 +64,17 @@ $(function(){
       lng = parseInt(lng.slice(0, lng.length - 1));
       div.click(function() {
         setLatLng(lat, lng);
+
+// Opening animations
+$("#basic-modal-content").modal({onOpen: function (dialog) {
+	dialog.overlay.fadeIn('fast', function () {
+		dialog.data.hide();
+		dialog.container.fadeIn('fast', function () {
+			dialog.data.slideDown('fast');
+		});
+	});
+}});
+
       });
       //div.append($("<div/>").attr("class", "note").html(this.name));
       $container.append(div);
@@ -85,7 +100,12 @@ $(function(){
 </head>
 <body>
 <div id="container">
-<div class="item" id="map_canvas" style="width:450px; height:464px"></div>
 </div>
+
+<div id="basic-modal-content">
+<div id="map_canvas" style="width:450px; height:464px"></div>
+<a href="#" class="simplemodal-close">close</a>
+</div>
+
 </body>
 </html>
