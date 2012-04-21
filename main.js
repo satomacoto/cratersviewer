@@ -23,11 +23,12 @@ $(function(){
     $.each(data, function(i, val) {
       if (this.imageurl == "no image") return;
       var div = $("<div/>").attr("class", "item").append($("<img>").attr("class", "photo").attr("src", this.imageurl));
-      var lat = this.Latitude;
-      lat = parseInt(lat.slice(0, lat.length - 1));
-      var lng = this.Longitude;
-      lng = parseInt(lng.slice(0, lng.length - 1));
       div.click(function() {
+        initialize();
+        var lat = this.Latitude;
+        lat = parseInt(lat.slice(0, lat.length - 1));
+        var lng = this.Longitude;
+        lng = parseInt(lng.slice(0, lng.length - 1));
         $("#basic-modal-content").modal();
         setLatLng(lat, lng);
       });
