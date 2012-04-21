@@ -1,12 +1,13 @@
 $(function(){
-  $.getJSON("http://craters.heroku.com/api/crater_list?sphere_id=1&offset=10&count=10", function(data) {
+  //$.getJSON("http://craters.heroku.com/api/crater_list?sphere_id=1&offset=10&count=10", function(data) {
+  $.getJSON("jcc.txt", function(data) {
     $.each(data, function(i, val) {
-      var lat = this.latitude;
+      var lat = this.Latitude;
       lat = parseInt(lat.slice(0, lat.length - 1));
-      var lng = this.longitude;
+      var lng = this.Longitude;
       lng = parseInt(lng.slice(0, lng.length - 1));
-      if (this.image_url == "no image") return;
-      var div = $("<div/>").attr("class", "item").append($("<img>").attr("class", "photo").attr("src", this.image_url));
+      if (this.imageurl == "no image") return;
+      var div = $("<div/>").attr("class", "item").append($("<img>").attr("class", "photo").attr("src", this.imageurl));
       div.click(function(e) {
         e.preventDefault();
         $("#basic-modal-content").remove();
@@ -28,6 +29,7 @@ $(function(){
         var map = new google.maps.Map(document.getElementById("map_canvas"), opts);
         $("#basic-modal-content").modal({persist: true, onShow: function (dialog) {
         }, onClose: function (dialog) {
+          //$('#basic-modal-content').unbind().remove();
         }});
       });
 
