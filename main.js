@@ -18,7 +18,6 @@ function initialize() {
 
 $(function(){
   initialize();
-  var $container = $('#container');
   $.getJSON("jcc.txt", function(data) {
     $.each(data, function(i, val) {
       var lat = this.Latitude;
@@ -31,9 +30,10 @@ $(function(){
         e.preventDefault();
         setLatLng(lat, lng);
         $("#basic-modal-content").modal({persist: true, onShow: function (dialog) {
-          resize_gmap('map_canvas');
         }});
       });
+
+      $container = $('#container');
       //div.append($("<div/>").attr("class", "note").html(this.name));
       $container.append(div);
     });

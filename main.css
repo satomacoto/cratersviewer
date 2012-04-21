@@ -1,5 +1,7 @@
 #simplemodal-overlay {background-color:#000;}
 #simplemodal-container {background-color:#333; border:8px solid #444; padding:12px;}
+body {
+}
 h1 {
   font-size: 40px;
   font-family: helvetica;
@@ -21,4 +23,14 @@ h1 {
   margin:10px;
   border-radius:10px;
   border:1px solid #ccc;
+}
+#basic-modal-content
+{
+  z-index: -1;
+  float: left;
+}
+#map_canvas
+{
+  z-index: -2;
+  float: left;
 }
