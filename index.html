@@ -13,6 +13,11 @@
 <style type="text/css">
 #simplemodal-overlay {background-color:#000;}
 #simplemodal-container {background-color:#333; border:8px solid #444; padding:12px;}
+h1 {
+  font-size: 40px;
+  font-family: helvetica;
+  padding-left: 10px;
+}
 .item {
   width: 220px;
   margin: 10px;
@@ -35,8 +40,8 @@
 
 // 緯度経度を設定する
 function setLatLng(lat, lng){
-var pos = new google.maps.LatLng(lat, lng);
-map.setCenter(pos);
+  var pos = new google.maps.LatLng(lat, lng);
+  map.setCenter(pos);
 }
 
 var map;
@@ -58,14 +63,19 @@ $(function(){
     $.each(data, function(i, val) {
       if (this.imageurl == "no image") return;
       var div = $("<div/>").attr("class", "item").append($("<img>").attr("class", "photo").attr("src", this.imageurl));
+      
+      // 緯度経度の設定
       var lat = this.Latitude;
       lat = parseInt(lat.slice(0, lat.length - 1));
       var lng = this.Longitude;
       lng = parseInt(lng.slice(0, lng.length - 1));
       div.click(function() {
+        $("#basic-modal-content").modal();
         setLatLng(lat, lng);
       });
+      
       //div.append($("<div/>").attr("class", "note").html(this.name));
+
       $container.append(div);
       console.log(this);
     });
@@ -77,20 +87,22 @@ $(function(){
     });
     
     // filter and crop
+    /*
     $(".photo").MyThumbnail({
       thumbWidth:200,
       thumbHeight:200,
       backgroundColor:"#ccc",
       imageDivClass:"myPic"
-    });    
+    });
+    */    
   });
 });
 </script>
 </head>
 <body>
+  <h1>craters</h1>
   <div id="basic-modal-content">
-    <div id="map_canvas" style="width:450px; height:464px"></div>
-    <a href="#" class="simplemodal-close">close</a>
+    <div id="map_canvas" style="width:400px; height:400px"></div>
   </div>
   <div id="container"></div>
 </body>
