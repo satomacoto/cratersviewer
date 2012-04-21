@@ -9,7 +9,7 @@ var map;
 function initialize() {
     var latlng = new google.maps.LatLng(35.539001,134.228468);
     var opts = {
-	zoom: 10,
+	zoom: 3,
 	center: latlng,
 	mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -21,16 +21,18 @@ $(function(){
   var $container = $('#container');
   $.getJSON("jcc.txt", function(data) {
     $.each(data, function(i, val) {
+      var lat = this.Latitude;
+      lat = parseInt(lat.slice(0, lat.length - 1));
+      var lng = this.Longitude;
+      lng = parseInt(lng.slice(0, lng.length - 1));
       if (this.imageurl == "no image") return;
       var div = $("<div/>").attr("class", "item").append($("<img>").attr("class", "photo").attr("src", this.imageurl));
-      div.click(function() {
-        initialize();
-        var lat = this.Latitude;
-        lat = parseInt(lat.slice(0, lat.length - 1));
-        var lng = this.Longitude;
-        lng = parseInt(lng.slice(0, lng.length - 1));
-        $("#basic-modal-content").modal();
+      div.click(function(e) {
+        e.preventDefault();
         setLatLng(lat, lng);
+        $("#basic-modal-content").modal({persist: true, onShow: function (dialog) {
+          resize_gmap('map_canvas');
+        }});
       });
       //div.append($("<div/>").attr("class", "note").html(this.name));
       $container.append(div);
