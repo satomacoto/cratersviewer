@@ -64,17 +64,6 @@ $(function(){
       lng = parseInt(lng.slice(0, lng.length - 1));
       div.click(function() {
         setLatLng(lat, lng);
-
-// Opening animations
-$("#basic-modal-content").modal({onOpen: function (dialog) {
-	dialog.overlay.fadeIn('fast', function () {
-		dialog.data.hide();
-		dialog.container.fadeIn('fast', function () {
-			dialog.data.slideDown('fast');
-		});
-	});
-}});
-
       });
       //div.append($("<div/>").attr("class", "note").html(this.name));
       $container.append(div);
@@ -99,13 +88,10 @@ $("#basic-modal-content").modal({onOpen: function (dialog) {
 </script>
 </head>
 <body>
-<div id="container">
-</div>
-
-<div id="basic-modal-content">
-<div id="map_canvas" style="width:450px; height:464px"></div>
-<a href="#" class="simplemodal-close">close</a>
-</div>
-
+  <div id="basic-modal-content">
+    <div id="map_canvas" style="width:450px; height:464px"></div>
+    <a href="#" class="simplemodal-close">close</a>
+  </div>
+  <div id="container"></div>
 </body>
 </html>
