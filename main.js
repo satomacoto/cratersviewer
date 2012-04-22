@@ -1,5 +1,5 @@
 $(function(){
-  //$.getJSON("http://craters.heroku.com/api/crater_list?sphere_id=1&offset=10&count=10", function(data) {
+  //$.getJSON("http://craters.heroku.com/api/crater_list?sphere_id=1&offset=10&count=10&jsoncallback=?", {}, function(data) {
   $.getJSON("jcc.txt", function(data) {
     $.each(data, function(i, val) {
       var lat = this.Latitude;
