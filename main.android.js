@@ -39,6 +39,7 @@ function initialize(){
   //$.getJSON("http://craters.heroku.com/api/crater_list?sphere_id=1&offset=10&count=10", function(data) {
   $.getJSON("jcc.txt", function(data) {
     $.each(data, function(i, val) {
+      if(i>10){return;}
       var lat = this.Latitude;
       lat = parseInt(lat.slice(0, lat.length - 1));
       var lng = this.Longitude;
